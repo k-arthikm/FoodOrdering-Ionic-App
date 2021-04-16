@@ -1,0 +1,107 @@
+
+
+<ion-header>
+  <ion-title>List of Orders!</ion-title>
+</ion-header>
+<ion-content>
+  <!-- <ion-button>Yet to be delivered</ion-button> -->
+  <a [routerLink]="['/app-allorders']" [queryParams]="{ status: 'Yet to be delivered'}">
+    Yet to be delivered
+  </a>
+  <a [routerLink]="['/app-allorders']" [queryParams]="{ status: 'Delivered'}">
+    Delivered
+  </a>
+  <a [routerLink]="['/app-allorders']" [queryParams]="{ status: 'Cancelled by Admin'}">
+    Cancelled by Admin
+  </a>
+  <a [routerLink]="['/app-allorders']" [queryParams]="{ status: 'Paused'}">
+    Paused
+  </a>
+
+
+  <!-- <ion-button>Delivered</ion-button>
+  <ion-button>Cancelled by Admin</ion-button>
+  <ion-button>Paused</ion-button> -->
+<ion-card *ngFor="let item of orders">
+  <ion-card-header>
+    <ion-card-subtitle>Order No:{{item.id}}</ion-card-subtitle>
+    <ion-card-title>Date: {{item.date}}</ion-card-title>
+    <ion-card-title>Payment Type: {{item.payment_type}}</ion-card-title>
+    <ion-card-title>Status: {{item.status}}</ion-card-title>
+    <ion-item *ngIf="item.status != 'Cancelled By Customer' && item.status != 'Cancelled by Customer'">
+      <!-- <ion-label>Status</ion-label> -->
+      <ion-select [(ngModel)]="item.status">
+        <ion-select-option value="Yet to be delivered">Yet to be delivered</ion-select-option>
+        <ion-select-option value="Delivered">Delivered</ion-select-option>
+        <ion-select-option value="Cancelled by Admin">Cancelled by Admin</ion-select-option>
+        <ion-select-option value="Paused">Paused</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-row>
+      Name: {{item.userDetails[0].name}}
+    </ion-row>
+    <ion-row>
+      Address: {{item.userDetails[0].address}}
+    </ion-row>
+    <ion-row>
+      Contact: {{item.userDetails[0].contact}}
+    </ion-row>
+    <ion-row>
+      Email: {{item.userDetails[0].email}}
+    </ion-row>
+    <ion-row>
+      Note: {{item.description}}
+    </ion-row>
+    <ion-item-divider>
+      <ion-label>
+        Basic Item Divider
+      </ion-label>
+    </ion-item-divider>
+    <ion-row *ngFor="let item1 of item.itemDetails;let i=index">
+      <ion-col>
+        #{{i+1}}
+      </ion-col>
+      
+      <ion-col>
+        Item {{item1.item_id}}
+      </ion-col>
+      <ion-col>
+        {{item1.quantity}} Pieces
+      </ion-col>
+      <ion-col>
+        Rs. {{item1.price}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Total 
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+      
+        Rs. {{calculateTotal(item.itemDetails)}}
+      </ion-col>
+      
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align:right">
+        <ion-button *ngIf="item.status != 'Cancelled By Customer' && item.status != 'Cancelled by Customer'" (click)="changeStatus(item)">Change Status
+
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+
+
+</ion-card>
+
+</ion-content>

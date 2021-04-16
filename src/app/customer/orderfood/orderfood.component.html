@@ -1,0 +1,41 @@
+
+  <ion-title>Order</ion-title>
+  <ion-item-divider>
+  </ion-item-divider>
+  <ion-title>Order your food here.</ion-title>
+  <ion-item-divider>
+  </ion-item-divider>
+  <ion-title>ORDER FOOD</ion-title>
+<ion-row>
+<ion-col>
+Name
+</ion-col>
+<ion-col>
+Item/Price/Piece
+</ion-col>
+<ion-col>
+Quantity
+</ion-col>
+</ion-row>
+<ion-row *ngFor="let item of items;let i=index">
+  <ion-col>
+{{item.name}}
+  </ion-col>
+  <ion-col>
+{{item.price}}
+  </ion-col>
+  <ion-col>
+    <ion-item>
+    <ion-label position="floating" >Enter Quantity</ion-label>
+    <ion-input [(ngModel)]="item.quantity"></ion-input>
+  </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+<ion-col style="text-align:right">
+  <ion-button (click)="order()">ORDER
+
+  </ion-button>
+</ion-col>
+</ion-row>

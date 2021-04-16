@@ -1,0 +1,112 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col ion-grid-column-padding-lg ion-grid-column-padding-md ion-grid-column-padding-sm
+        ion-grid-column-padding-xl ion-grid-column-padding-xs ion-grid-columns>
+        Food Menu
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col ion-grid-column-padding-lg ion-grid-column-padding-md ion-grid-column-padding-sm
+        ion-grid-column-padding-xl ion-grid-column-padding-xs ion-grid-columns>
+        Add, Edit or Remove Menu Items.
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col ion-grid-column-padding-lg ion-grid-column-padding-md ion-grid-column-padding-sm
+        ion-grid-column-padding-xl ion-grid-column-padding-xs ion-grid-columns>
+        ORDER FOOD
+      </ion-col>
+    </ion-row>
+
+
+    <!-- <ion-title>Food Menu</ion-title> -->
+    <!-- <ion-title>Add, Edit or Remove Menu Items.</ion-title>
+  <ion-title>ORDER FOOD</ion-title> -->
+    <ion-row>
+      <ion-col>
+        Name
+        <!-- <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item> -->
+      </ion-col>
+
+      <ion-col>
+        Item Price/Piece
+        <!-- <ion-item>
+        <ion-label position="floating">Item Price/Piece</ion-label>
+        <ion-textarea></ion-textarea>
+      </ion-item> -->
+      </ion-col>
+      <ion-col ion-grid-column-padding-sm>
+        Available
+        <!-- <ion-item>
+
+
+        <ion-item>
+          <ion-label>Available</ion-label>
+          <ion-toggle slot="start" name="available" checked></ion-toggle>
+        </ion-item>
+      </ion-item> -->
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of items;">
+      <ion-col>
+        <!-- <ion-input placeholder="Enter Input"></ion-input> -->
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input [(ngModel)]="item.name" name="name" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <!-- <ion-input placeholder="Enter Input"></ion-input> -->
+        <ion-item>
+          <ion-label position="floating">Item Price/Piece</ion-label>
+          <ion-input [(ngModel)]="item.price" name="price" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>Available</ion-label>
+          <ion-toggle [(ngModel)]="item.checked" slot="start" name="available"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align:right">
+        <ion-button (click)="modify()">Modify</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+
+  <ion-label>ADD ITEM</ion-label>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="name" type="text"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <!-- <ion-input placeholder="Enter Input"></ion-input> -->
+      <ion-item>
+        <ion-label position="floating">Item Price/Piece</ion-label>
+        <ion-input [(ngModel)]="price" type="text"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col></ion-col>
+    <ion-col style="text-align:right">
+      <ion-button (click)="add(name,price)">ADD
+
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+
+
+</ion-content>

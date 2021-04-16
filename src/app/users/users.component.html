@@ -1,0 +1,205 @@
+<!-- <ion-header> -->
+  <ion-title>LIST OF USERS</ion-title>
+  <ion-item-divider>
+  </ion-item-divider>
+<!-- </ion-header> -->
+<!-- <ion-content> -->
+  <ion-title>User List</ion-title>
+  <ion-row>
+<ion-col>
+  Name
+</ion-col>
+<ion-col>
+  Email
+</ion-col>
+<ion-col>
+  Contact
+</ion-col>
+	<ion-col>
+  Address
+  </ion-col>
+  <ion-col>
+    Role
+  </ion-col>
+  <ion-col>
+    Verified
+  </ion-col>
+  <ion-col>
+    Enable
+  </ion-col>
+  <ion-col>
+   Wallet
+  </ion-col>				
+  </ion-row>
+  <ion-row *ngFor="let item of usersList; let i=index">
+    <ion-col>{{item.name}}</ion-col>
+    <ion-col>{{item.email}}</ion-col>
+    <ion-col>{{item.contact}}</ion-col>
+    <ion-col>{{item.address}}</ion-col>
+    <ion-col>
+      <!-- <ion-select [(ngModel)]="item.role">
+        <ion-select-option value="Administrator">Administrator</ion-select-option>
+        <ion-select-option value="Customer">Customer</ion-select-option>
+      </ion-select> -->
+  
+        <!-- <ngx-select-dropdown
+        [(ngModel)]="item.role" 
+        [options]="dropdownOptions">
+
+       </ngx-select-dropdown> -->
+
+       <!-- <ngx-dropdown-list 
+                   id= "dropdownOptions-{{i}}"
+                   name="dropdownOptions-{{i}}"
+                   [items]="dropdownOptions"
+                   [multiSelection]="false"
+                   [placeHolder]="'ROLE'"
+                   [(selectedValue)]="dropdownOptions.selected"
+                   [suffixText]="''"
+                   [filterBox]="false"
+                   [formatNumber]="true"
+                   [disabled]="false">
+</ngx-dropdown-list> -->
+
+<!-- <div class="dropdown" dropdown [dropdownToggle]="false" (onOpen)="doSomeActionOnOpen()" (onClose)="doSomeActionOnClose()">
+  <button class="btn btn-primary" dropdown-open>My Heroes</button>
+  <ul class="dropdown-menu">
+      <li><a>Administrator</a></li>
+      <li><a>Customer</a></li>
+      <li><a>Lieman</a></li>
+  </ul>
+</div> -->
+<select [(ngModel)]="item.role" >
+  <option value="Administrator" >
+    Administrator
+  </option>
+  <option value="Customer" >
+    Customer
+      </option>
+</select>
+
+    </ion-col>
+    <ion-col>
+      <ion-select [(ngModel)]="item.verified">
+        <ion-select-option value="1">Verified</ion-select-option>
+        <ion-select-option value="0">Not Verified</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col>
+      <ion-select [(ngModel)]="item.verified">
+        <ion-select-option value="1">Disable</ion-select-option>
+        <ion-select-option value="0">Enable</ion-select-option>
+      </ion-select>
+    </ion-col>
+    <ion-col>
+        <ion-input [(ngModel)]="item.balance" type="number"></ion-input>
+  </ion-col>
+    <ion-col></ion-col>
+
+
+  </ion-row>
+
+  <ion-row>
+    <ion-col style="text-align:right">
+      <ion-button (click)="modifyUser()">Modify</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-title>ADD USER</ion-title>
+ 
+  <ion-item-divider>
+  </ion-item-divider>
+
+  <ion-row>
+    <ion-col>
+      Name
+    </ion-col>
+    <ion-col>
+      Password
+    </ion-col>
+    <ion-col>
+      Email
+    </ion-col>
+    <ion-col>
+      Contact
+    </ion-col>
+      <ion-col>
+      Address
+      </ion-col>
+      <ion-col>
+        Role
+      </ion-col>
+      <ion-col>
+        Verified
+      </ion-col>
+      <ion-col>
+        Enable
+      </ion-col>				
+      </ion-row>
+
+  <ion-row>
+    <ion-row >
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating" >User Name</ion-label>
+        <ion-input [(ngModel)]="user.username"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating" >Name</ion-label>
+        <ion-input [(ngModel)]="user.name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating" >Password</ion-label>
+        <ion-input [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating" >Email</ion-label>
+        <ion-input [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating" >Contact</ion-label>
+        <ion-input [(ngModel)]="user.contact"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+        <ion-label position="floating" >Address</ion-label>
+        <ion-input [(ngModel)]="user.address"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <select [(ngModel)]="user.role" >
+          <option value="Administrator" >
+            Administrator
+          </option>
+          <option value="Customer" >
+            Customer
+              </option>
+        </select>
+      </ion-col>
+      <ion-col>
+        <ion-select [(ngModel)]="user.verified">
+          <ion-select-option value="1">Verified</ion-select-option>
+          <ion-select-option value="0">Not Verified</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-select [(ngModel)]="user.deleted">
+          <ion-select-option value="1">Disable</ion-select-option>
+          <ion-select-option value="0">Enable</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-col style="text-align:right">
+      <ion-button (click)="addUser(user)">Add User</ion-button>
+    </ion-col>
+  </ion-row>
+<!-- </ion-content> -->
